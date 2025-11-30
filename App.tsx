@@ -12,6 +12,7 @@ import Blog from './components/Blog';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import FloatingButtons from './components/FloatingButtons';
+import AIStudio from './components/AIStudio';
 
 const App: React.FC = () => {
   return (
@@ -24,6 +25,7 @@ const App: React.FC = () => {
         <LaserEngraving />
         <Products />
         <Gallery />
+        <AIStudio />
         <WhyChooseUs />
         <Regions />
         <Blog />

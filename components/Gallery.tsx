@@ -2,7 +2,7 @@ import React from 'react';
 import { GALLERY_IMAGES } from '../constants';
 
 const Gallery: React.FC = () => {
-  // Use the gallery images directly, ensuring we have enough to scroll
+  // Use the gallery images directly
   // If the list is short, we duplicate it. If it's huge (like now), duplicating once is enough for a smooth loop.
   const displayImages = [...GALLERY_IMAGES, ...GALLERY_IMAGES];
 
