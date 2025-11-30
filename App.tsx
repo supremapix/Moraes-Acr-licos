@@ -5,6 +5,7 @@ import Services from './components/Services';
 import About from './components/About';
 import LaserEngraving from './components/LaserEngraving';
 import Products from './components/Products';
+import Gallery from './components/Gallery';
 import WhyChooseUs from './components/WhyChooseUs';
 import Regions from './components/Regions';
 import Blog from './components/Blog';
@@ -22,6 +23,7 @@ const App: React.FC = () => {
         <About />
         <LaserEngraving />
         <Products />
+        <Gallery />
         <WhyChooseUs />
         <Regions />
         <Blog />

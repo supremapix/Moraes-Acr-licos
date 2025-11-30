@@ -3,9 +3,14 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="Moraes Acrílicos - Especialistas em Acrílicos há 25 anos em Curitiba. Domos, Clarabóias, Corte a Laser, Displays e Peças Personalizadas." />
-    <meta name="keywords" content="Acrílico Curitiba, Domos e Clarabóias Curitiba, Corte a Laser Acrílico, Displays de Acrílico, Chapas Acrílicas Curitiba" />
-    <title>Moraes Acrílicos - Domos, Clarabóias e Corte a Laser</title>
+    <meta name="description" content="Moraes Acrílicos Curitiba - Fabricante de Domos, Clarabóias, Púlpitos, Urnas, Troféus e Corte a Laser. 25 anos de experiência. Atendemos todo o Paraná." />
+    <meta name="keywords" content="Acrílico Curitiba, Domos, Clarabóias, Púlpitos de Acrílico, Urnas de Acrílico, Corte a Laser, Troféus, Displays, Pinhais, Paraná" />
+    <meta name="author" content="Moraes Acrílicos" />
+    <meta property="og:title" content="Moraes Acrílicos - Domos, Púlpitos e Corte a Laser em Curitiba" />
+    <meta property="og:description" content="Soluções completas em acrílico: Domos, clarabóias, púlpitos, urnas, displays e corte a laser. Qualidade e tradição há 25 anos." />
+    <meta property="og:image" content="acrilicos-1920x1080.jpg" />
+    <meta property="og:type" content="website" />
+    <title>Moraes Acrílicos - Domos, Púlpitos e Corte a Laser em Curitiba</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
     <script>
@@ -31,6 +36,7 @@
               'fade-in': 'fadeIn 0.3s ease-out forwards',
               'slide-up': 'slideUp 0.4s ease-out forwards',
               'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
+              'scroll': 'scroll 40s linear infinite',
             },
             keyframes: {
               'heart-beat': {
@@ -55,6 +61,10 @@
               fadeInUp: {
                 '0%': { opacity: '0', transform: 'translateY(20px)' },
                 '100%': { opacity: '1', transform: 'translateY(0)' },
+              },
+              scroll: {
+                '0%': { transform: 'translateX(0)' },
+                '100%': { transform: 'translateX(-50%)' },
               }
             }
           }
@@ -110,6 +120,10 @@
       }
       body::-webkit-scrollbar-thumb:hover {
         background: #1e3a8a;
+      }
+      .gallery-track {
+        display: flex;
+        width: max-content;
       }
     </style>
   <script type="importmap">
