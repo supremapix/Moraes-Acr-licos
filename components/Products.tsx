@@ -1,14 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { PRODUCTS, COMPANY_INFO } from '../constants';
-import { MessageCircle, Share2, X, Phone, Mail } from 'lucide-react';
+import { MessageCircle, Share2, X, Phone, Mail, ChevronLeft, ChevronRight } from 'lucide-react';
 import { ProductItem } from '../types';
 
 const Products: React.FC = () => {
   const [selectedProduct, setSelectedProduct] = useState<ProductItem | null>(null);
   const [shareMenuOpen, setShareMenuOpen] = useState<string | null>(null);
+  const [activeImageIndex, setActiveImageIndex] = useState(0);
 
   const openModal = (product: ProductItem) => {
     setSelectedProduct(product);
+    setActiveImageIndex(0); // Reset to first image
     document.body.style.overflow = 'hidden';
   };
 
@@ -62,11 +64,26 @@ const Products: React.FC = () => {
   }
 
   // Close share menu when clicking outside
-  React.useEffect(() => {
+  useEffect(() => {
       const handleClickOutside = () => setShareMenuOpen(null);
       document.addEventListener('click', handleClickOutside);
       return () => document.removeEventListener('click', handleClickOutside);
   }, []);
+
+  // Carousel Logic
+  const productImages = selectedProduct 
+    ? (selectedProduct.images && selectedProduct.images.length > 0 ? selectedProduct.images : [selectedProduct.image])
+    : [];
+
+  const nextImage = (e?: React.MouseEvent) => {
+    e?.stopPropagation();
+    setActiveImageIndex((prev) => (prev + 1) % productImages.length);
+  };
+
+  const prevImage = (e?: React.MouseEvent) => {
+    e?.stopPropagation();
+    setActiveImageIndex((prev) => (prev - 1 + productImages.length) % productImages.length);
+  };
 
   return (
     <section id="produtos" className="py-20 bg-gray-50">
@@ -140,27 +157,73 @@ const Products: React.FC = () => {
       {selectedProduct && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm animate-fade-in" onClick={closeModal}>
           <div 
-            className="bg-white rounded-2xl w-full max-w-4xl overflow-hidden shadow-2xl flex flex-col md:flex-row relative animate-slide-up max-h-[90vh] md:max-h-auto overflow-y-auto md:overflow-visible"
+            className="bg-white rounded-2xl w-full max-w-5xl overflow-hidden shadow-2xl flex flex-col md:flex-row relative animate-slide-up max-h-[95vh] md:max-h-[90vh]"
             onClick={(e) => e.stopPropagation()}
           >
             <button 
                 onClick={closeModal}
-                className="absolute top-4 right-4 z-10 bg-white/80 hover:bg-white text-gray-800 p-2 rounded-full transition-colors backdrop-blur-sm"
+                className="absolute top-4 right-4 z-20 bg-white/80 hover:bg-white text-gray-800 p-2 rounded-full transition-colors backdrop-blur-sm shadow-sm"
             >
                 <X size={24} />
             </button>
 
-            {/* Image Gallery Area (Single Image for now) */}
-            <div className="w-full md:w-1/2 bg-gray-100 h-[300px] md:h-auto shrink-0">
-                <img 
-                    src={selectedProduct.image} 
-                    alt={selectedProduct.title} 
-                    className="w-full h-full object-cover"
-                />
+            {/* Image Gallery Area */}
+            <div className="w-full md:w-1/2 bg-gray-100 flex flex-col">
+                {/* Main Image */}
+                <div className="relative flex-grow h-[300px] md:h-auto bg-gray-200 group">
+                    <img 
+                        src={productImages[activeImageIndex]} 
+                        alt={`${selectedProduct.title} - Imagem ${activeImageIndex + 1}`} 
+                        className="w-full h-full object-contain mix-blend-multiply p-4" // Using contain to show full image properly
+                    />
+                    
+                    {/* Navigation Arrows */}
+                    {productImages.length > 1 && (
+                        <>
+                            <button 
+                                onClick={prevImage}
+                                className="absolute left-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-gray-800 p-2 rounded-full shadow-md opacity-0 group-hover:opacity-100 transition-all duration-200"
+                            >
+                                <ChevronLeft size={24} />
+                            </button>
+                            <button 
+                                onClick={nextImage}
+                                className="absolute right-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-gray-800 p-2 rounded-full shadow-md opacity-0 group-hover:opacity-100 transition-all duration-200"
+                            >
+                                <ChevronRight size={24} />
+                            </button>
+                        </>
+                    )}
+                </div>
+
+                {/* Thumbnails */}
+                {productImages.length > 1 && (
+                    <div className="p-4 bg-white border-t border-gray-200 overflow-x-auto">
+                        <div className="flex gap-2">
+                            {productImages.map((img, idx) => (
+                                <button
+                                    key={idx}
+                                    onClick={() => setActiveImageIndex(idx)}
+                                    className={`relative w-16 h-16 shrink-0 rounded-md overflow-hidden border-2 transition-all duration-200 ${
+                                        activeImageIndex === idx 
+                                        ? 'border-brand-orange ring-2 ring-brand-orange/30' 
+                                        : 'border-transparent hover:border-gray-300'
+                                    }`}
+                                >
+                                    <img 
+                                        src={img} 
+                                        alt={`Thumbnail ${idx + 1}`} 
+                                        className="w-full h-full object-cover"
+                                    />
+                                </button>
+                            ))}
+                        </div>
+                    </div>
+                )}
             </div>
 
             {/* Content Area */}
-            <div className="w-full md:w-1/2 p-8 flex flex-col">
+            <div className="w-full md:w-1/2 p-8 flex flex-col overflow-y-auto">
                 <h3 className="text-3xl font-display font-bold text-gray-800 mb-2">{selectedProduct.title}</h3>
                 <div className="w-16 h-1 bg-brand-orange rounded-full mb-6"></div>
                 
