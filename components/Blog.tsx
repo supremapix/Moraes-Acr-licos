@@ -31,7 +31,7 @@ const BlogPostCard: React.FC<{ post: typeof BLOG_POSTS[0] }> = ({ post }) => {
           <div className={`absolute inset-0 bg-gray-300 animate-pulse transition-opacity duration-500 ${isLoaded ? 'opacity-0' : 'opacity-100'}`}></div>
           
           <img 
-            src={`https://picsum.photos/600/400?random=${Number(post.id) + 20}`} 
+            src={post.image || `https://picsum.photos/600/400?random=${Number(post.id) + 20}`} 
             alt={post.title} 
             className={`w-full h-full object-cover transition-opacity duration-700 ease-in-out ${isLoaded ? 'opacity-100' : 'opacity-0'}`} 
             loading="lazy"
