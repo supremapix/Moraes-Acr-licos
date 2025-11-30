@@ -10,7 +10,7 @@ export const COMPANY_INFO = {
   phoneClean: "554136657164",
   email: "contato@moraesacrilicos.com.br",
   whatsappLink: "https://api.whatsapp.com/send?phone=5541991579124&text=Ol%C3%A1%2C%20achei%20seu%20site%20no%20*Google*%20e%20gostaria%20de%3A",
-  videoBgId: "OoorHB6btU0", // Original requested video
+  videoBgId: "OoorHB6btU0", // Original YouTube Video ID
 };
 
 export const NAV_LINKS: NavItem[] = [
@@ -70,13 +70,13 @@ export const PRODUCTS: ProductItem[] = [
   {
     id: "3",
     title: "Urnas e Caixas",
-    image: "https://images.unsplash.com/photo-1606850046594-39cb621379bd?q=80&w=800&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1589829085413-56de8ae18c73?q=80&w=800&auto=format&fit=crop",
     description: "Urnas para sorteios, sugestões e caixas organizadoras sob medida. Fechos para cadeado e suporte para informativos opcionais.",
   },
   {
     id: "4",
     title: "Troféus Personalizados",
-    image: "https://images.unsplash.com/photo-1590845947698-8924d7409b56?q=80&w=800&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1616031036668-3e587163f94c?q=80&w=800&auto=format&fit=crop",
     description: "Troféus e medalhas em acrílico com corte a laser. Design exclusivo para premiações corporativas e esportivas.",
   },
   {
@@ -94,7 +94,7 @@ export const PRODUCTS: ProductItem[] = [
   {
     id: "7",
     title: "Expositores de Produtos",
-    image: "https://images.unsplash.com/photo-1556742502-ec7c0e9f34b1?q=80&w=800&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=80&w=800&auto=format&fit=crop",
     description: "Expositores tipo escada, nichos e suportes para vitrines. Destaque seus produtos com a transparência do acrílico.",
   },
   {
