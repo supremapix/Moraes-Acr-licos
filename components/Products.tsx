@@ -174,21 +174,21 @@ const Products: React.FC = () => {
                     <img 
                         src={productImages[activeImageIndex]} 
                         alt={`${selectedProduct.title} - Imagem ${activeImageIndex + 1}`} 
-                        className="w-full h-full object-contain mix-blend-multiply p-4" // Using contain to show full image properly
+                        className="w-full h-full object-contain mix-blend-multiply p-4" 
                     />
                     
-                    {/* Navigation Arrows */}
+                    {/* Navigation Arrows - Always visible */}
                     {productImages.length > 1 && (
                         <>
                             <button 
                                 onClick={prevImage}
-                                className="absolute left-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-gray-800 p-2 rounded-full shadow-md opacity-0 group-hover:opacity-100 transition-all duration-200"
+                                className="absolute left-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-gray-800 p-2 rounded-full shadow-md transition-all duration-200"
                             >
                                 <ChevronLeft size={24} />
                             </button>
                             <button 
                                 onClick={nextImage}
-                                className="absolute right-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-gray-800 p-2 rounded-full shadow-md opacity-0 group-hover:opacity-100 transition-all duration-200"
+                                className="absolute right-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-gray-800 p-2 rounded-full shadow-md transition-all duration-200"
                             >
                                 <ChevronRight size={24} />
                             </button>

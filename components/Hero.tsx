@@ -74,9 +74,9 @@ const Hero: React.FC = () => {
 
   return (
     <section id="inicio" className="relative w-full h-screen overflow-hidden">
-      {/* Container with Fallback Image */}
+      {/* Container with Fallback Image - Updated to use local image */}
       <div 
-        className="hero-video-container bg-black bg-[url('https://images.unsplash.com/photo-1628744448840-55bdb2497bd4?q=80&w=1200&auto=format&fit=crop')] bg-cover bg-center"
+        className="hero-video-container bg-black bg-[url('domos-2000x1125.jpg')] bg-cover bg-center"
       >
         <div id="youtube-background"></div>
         <div className="hero-overlay"></div>
