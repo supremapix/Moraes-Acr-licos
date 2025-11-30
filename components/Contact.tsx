@@ -16,9 +16,29 @@ const Contact: React.FC = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [shake, setShake] = useState(false);
 
+  const formatPhone = (value: string) => {
+    // Remove non-digits
+    const digits = value.replace(/\D/g, '');
+    
+    // Limit to 11 digits
+    const limitedDigits = digits.slice(0, 11);
+    
+    // Apply mask
+    if (limitedDigits.length <= 10) {
+      return limitedDigits.replace(/(\d{2})(\d{4})(\d{0,4})/, '($1) $2-$3');
+    } else {
+      return limitedDigits.replace(/(\d{2})(\d{5})(\d{0,4})/, '($1) $2-$3');
+    }
+  };
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
+    
+    if (name === 'phone') {
+        setFormData(prev => ({ ...prev, [name]: formatPhone(value) }));
+    } else {
+        setFormData(prev => ({ ...prev, [name]: value }));
+    }
   };
 
   const handleBlur = (e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -122,6 +142,7 @@ const Contact: React.FC = () => {
                     onBlur={handleBlur}
                     className={getInputClasses('phone')}
                     placeholder="(41) 99999-9999"
+                    maxLength={15}
                     />
                 </div>
               </div>

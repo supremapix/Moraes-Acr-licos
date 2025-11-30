@@ -74,18 +74,21 @@ const Hero: React.FC = () => {
 
   return (
     <section id="inicio" className="relative w-full h-screen overflow-hidden">
-      <div className="hero-video-container bg-black">
+      {/* Container with Fallback Image */}
+      <div 
+        className="hero-video-container bg-black bg-[url('https://images.unsplash.com/photo-1628744448840-55bdb2497bd4?q=80&w=1200&auto=format&fit=crop')] bg-cover bg-center"
+      >
         <div id="youtube-background"></div>
         <div className="hero-overlay"></div>
         <div className="hero-content absolute inset-0 z-10 flex flex-col justify-center items-center text-center text-white px-4">
           <h1 className="text-4xl md:text-6xl font-display font-bold mb-4 drop-shadow-lg tracking-wide leading-tight animate-fade-in-up">
             Especialistas em Acrílicos <br/><span className="text-brand-orange">há 25 anos</span>
           </h1>
-          <p className="text-lg md:text-2xl mb-8 max-w-3xl drop-shadow-md opacity-90">
+          <p className="text-lg md:text-2xl mb-8 max-w-3xl drop-shadow-md opacity-90 animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
             Domos, Clarabóias, Corte a Laser, Displays e Peças Personalizadas em Curitiba.
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4">
+          <div className="flex flex-col sm:flex-row gap-4 animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
             <a
               href={COMPANY_INFO.whatsappLink}
               target="_blank"
